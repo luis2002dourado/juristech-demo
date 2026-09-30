@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JurisTech — Gestão para Escritórios de Advocacia</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b1b33'/><path d='M50 18v58M30 30h40M26 42l-8 18h16zM74 42l-8 18h16z' stroke='%23c9a227' stroke-width='6' fill='none' stroke-linecap='round'/></svg>">
+</head>
+<body>
+
+<!-- ============================ LOGIN ============================ -->
+<div class="login-wrap" id="tela-login">
+  <div class="login-art">
+    <div class="brand-mark">
+      <svg width="34" height="34" viewBox="0 0 100 100" fill="none" stroke="#0b1b33" stroke-width="7" stroke-linecap="round">
+        <path d="M50 20v56M28 32h44M24 44l-9 20h18zM76 44l-9 20h18zM34 78h32"/>
+      </svg>
+    </div>
+    <h1>Juris<span>Tech</span><br>Gestão Jurídica</h1>
+    <p>A plataforma completa do seu escritório: clientes, funil de vendas, processos, prazos, produtividade e financeiro — integrados e conectados ao DataJud do CNJ.</p>
+    <div class="login-feats">
+      <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> CRM completo com funil de prospecção</div>
+      <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Andamentos automáticos de 91 tribunais</div>
+      <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Controle de prazos fatais com alerta</div>
+      <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Timesheet, honorários e fluxo de caixa</div>
+      <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> Trilha de auditoria e perfis de acesso</div>
+    </div>
+  </div>
+
+  <div class="login-side">
+    <form class="login-card" id="form-login" autocomplete="on">
+      <h2>Acessar o sistema</h2>
+      <p>Entre com suas credenciais do escritório.</p>
+
+      <div class="campo">
+        <label for="in-email">E-mail</label>
+        <input type="email" id="in-email" required autocomplete="username" placeholder="seu.nome@escritorio.com.br">
+      </div>
+      <div class="campo">
+        <label for="in-senha">Senha</label>
+        <input type="password" id="in-senha" required autocomplete="current-password" placeholder="••••••••••">
+      </div>
+
+      <div class="campo escondido" id="bloco-mfa">
+        <label for="in-mfa">Código de verificação</label>
+        <input type="text" id="in-mfa" inputmode="numeric" maxlength="6" autocomplete="one-time-code"
+               placeholder="000000" style="letter-spacing:6px;text-align:center;font-size:19px">
+        <div class="ajuda">Código de 6 dígitos do seu aplicativo autenticador, ou um código de recuperação.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primario btn-bloco" id="btn-entrar" style="height:44px">Entrar</button>
+
+      <div class="demo-hint">
+        <strong>Demonstração — entrada liberada</strong><br>
+        Os campos já estão preenchidos. É só clicar em <b>Entrar</b>.<br>
+        <span class="muted">Dados fictícios. Nada é enviado para servidor algum.</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============================ APLICAÇÃO ============================ -->
+<div class="app" id="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="mark">
+        <svg width="20" height="20" viewBox="0 0 100 100" fill="none" stroke="#0b1b33" stroke-width="8" stroke-linecap="round">
+          <path d="M50 20v56M28 32h44M24 44l-9 20h18zM76 44l-9 20h18zM34 78h32"/>
+        </svg>
+      </div>
+      <div>
+        <b>JurisTech</b>
+        <small>GESTÃO JURÍDICA</small>
+      </div>
+    </div>
+
+    <nav class="nav" id="menu"></nav>
+
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar" id="u-avatar">A</div>
+        <div class="info">
+          <b id="u-nome">—</b>
+          <small id="u-papel">—</small>
+        </div>
+        <button class="btn-sair" id="btn-sair" title="Sair do sistema" aria-label="Sair">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="burger" id="burger" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+      <div>
+        <h2 id="titulo-pagina">Painel Geral</h2>
+        <div class="sub" id="sub-pagina">Visão consolidada do escritório</div>
+      </div>
+      <div class="spacer"></div>
+      <div style="position:relative">
+        <button class="sino" id="btn-sino" aria-label="Notificações">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></svg>
+          <span class="pip escondido" id="pip-notif">0</span>
+        </button>
+        <div class="painel-notif" id="painel-notif">
+          <header>
+            <b>Notificações</b>
+            <button class="btn btn-neutro btn-min" id="btn-ler-todas">Marcar todas como lidas</button>
+          </header>
+          <div id="lista-notif"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="conteudo" id="conteudo"></main>
+  </div>
+</div>
+
+<div class="modal-fundo" id="modal-fundo">
+  <div class="modal" id="modal">
+    <header><h3 id="modal-titulo">—</h3>
+      <button class="fechar" id="modal-fechar" aria-label="Fechar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </header>
+    <div class="corpo" id="modal-corpo"></div>
+    <footer id="modal-rodape"></footer>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="js/demo-backend.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/paginas.js"></script>
+<script src="js/app.js"></script>
+
+<div id="faixa-demo" style="position:fixed;left:0;right:0;bottom:0;z-index:9999;
+     background:#0b1b33;color:#fff;font:500 13px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+     padding:9px 14px;display:flex;gap:12px;align-items:center;justify-content:center;
+     flex-wrap:wrap;box-shadow:0 -2px 14px rgba(0,0,0,.28)">
+  <span style="display:inline-flex;align-items:center;gap:7px">
+    <span style="width:8px;height:8px;border-radius:50%;background:#c9a227;flex:none"></span>
+    <b style="color:#c9a227">Versão de demonstração</b>
+  </span>
+  <span style="opacity:.85">Dados fictícios, processados no seu navegador. Nada é gravado em servidor.</span>
+  <button onclick="DEMO_REINICIAR()" style="background:#c9a227;color:#0b1b33;border:0;
+      border-radius:7px;padding:6px 13px;font-weight:700;cursor:pointer;font-size:12.5px">
+    Reiniciar demonstração
+  </button>
+</div>
+<style>
+  body { padding-bottom: 52px; }
+  @media (max-width:620px){ #faixa-demo{font-size:12px;padding:8px 10px} body{padding-bottom:74px} }
+</style>
+<script>
+  // Preenche o login para quem está só conhecendo o sistema.
+  document.addEventListener('DOMContentLoaded', () => {
+    const e = document.getElementById('in-email');
+    const s = document.getElementById('in-senha');
+    if (e && !e.value) e.value = 'demo@juristech.com.br';
+    if (s && !s.value) s.value = 'Demo@2026Juris';
+  });
+</script>
+
+</body>
+</html>
